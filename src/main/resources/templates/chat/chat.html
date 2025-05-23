@@ -11,26 +11,32 @@
 	<h1 th:text="${title}"></h1>
 
 	<form method="post" action="#" th:action="@{/chat}" th:object="${chat}">
+		<div>
+			<label><input type="text" name="name" th:value="*{name}" placeholder="お名前"></label>
 
-		<label><input type="text" name="name" th:value="*{name}" placeholder="お名前"></label>
+			<label>: <input type="text" name="comment" th:value="*{comment}" placeholder="コメント:500文字まで"></label>
+
+			<input type="submit" value="投稿">
+		</div>
+
+
 		<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">エラー</div>
 
-		<label>: <input type="text" name="comment" th:value="*{comment}" placeholder="コメント:500文字まで"></label>
 		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">エラー</div>
 
-		<input type="submit" value="投稿">
+
 	</form>
 
 	<br>
 	<div th:if="${#lists.isEmpty(chatList)}">投稿はまだありません。</div>
 	<ul>
-	  <li th:each="c : ${chatList}" class="chat-item">
-	    <div class="chat-name">
-	        <div class="name" th:text="${c.name}">名前</div>
-	      <small th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm')}">時間</small>
-	    </div>
-	    <div class="chat-bubble" th:text="${c.comment}">コメント</div>
-	  </li>
+		<li th:each="c : ${chatList}" class="chat-item">
+			<div class="chat-name">
+				<div class="name" th:text="${c.name}">名前</div>
+				<small th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm')}">時間</small>
+			</div>
+			<div class="chat-bubble" th:text="${c.comment}">コメント</div>
+		</li>
 	</ul>
 
 	<a href="/top">トップページへ戻る</a>
