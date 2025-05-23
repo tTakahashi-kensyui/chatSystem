@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1 th:text="${title}"></h1>
+	
+	<form action="/complete" method="post">
+	  <label for="username">名前:</label>
+	  <input type="text" id="username" name="username" required>
+	  
+	  <label for="message">コメント:</label>
+	  <input type="text" id="message" name="message" required>
+	  
+	  <button type="submit">投稿</button>
+	</form>
+	
+	<a href="/top">トップページへ戻る</a>
+</body>
+
+</html>
