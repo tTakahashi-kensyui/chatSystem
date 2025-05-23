@@ -1,0 +1,1 @@
+INSERT INTO chat (name,comment) VALUES ('taro','初コメ');
