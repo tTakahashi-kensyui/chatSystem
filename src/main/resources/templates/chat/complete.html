@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>送信完了</title>
+	<meta charset="UTF-8">
+	<title>送信完了</title>
 </head>
+
 <body>
-    <h1>送信が完了しました！</h1>
+	<h1>送信が完了しました！</h1>
 
-    <!-- 任意で送信内容の確認表示 -->
-    <p th:text="'名前：' + ${username}"></p>
-    <p th:text="'メッセージ：' + ${message}"></p>
+	<form method="get" action="#" th:action="@{/chat}">
+		<div th:object="${chat}">
+			<!-- 任意で送信内容の確認表示 -->
+			<p th:text="'名前：' + *{name}"></p>
+			<p th:text="'コメント：' + *{comment}"></p>
+		</div>
+	</form>
 
-    <a href="/chat">戻る</a>
+
+
+
+	<a href="/chat">戻る</a>
 </body>
+
 </html>

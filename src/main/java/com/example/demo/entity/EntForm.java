@@ -20,19 +20,19 @@ public class EntForm {
 		this.id = id;
 	}
 
-	public String getEntName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setEntName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getEntComment() {
+	public String getComment() {
 		return comment;
 	}
 
-	public void setEntComment(String comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 	

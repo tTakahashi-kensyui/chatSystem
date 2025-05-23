@@ -3,28 +3,28 @@ package com.example.demo.chat;
 public class Chat {
 
 	//@NotBlank(message = "名前を入力してください")
-	private String Name;
+	private String name;
 	
 
-	private String Comment;
+	private String comment;
 
 	public Chat() {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getComment() {
-		return Comment;
+		return comment;
 	}
 
 	public void setComment(String comment) {
-		Comment = comment;
+		this.comment = comment;
 	}
 	
 	
