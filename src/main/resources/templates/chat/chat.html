@@ -26,7 +26,7 @@
 	<ul>
 	  <li th:each="c : ${chatList}" class="chat-item">
 	    <div class="chat-name">
-	      <span th:text="${c.name}">名前</span>
+	        <div class="name" th:text="${c.name}">名前</div>
 	      <small th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm')}">時間</small>
 	    </div>
 	    <div class="chat-bubble" th:text="${c.comment}">コメント</div>

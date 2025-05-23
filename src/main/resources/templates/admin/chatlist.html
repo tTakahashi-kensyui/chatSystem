@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">コメント管理画面</title>
+</head>
+
+<body>
+	<h1 th:text="${title}"></h1>
+
+	<table border="1" cellpadding="5" cellspacing="0">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>名前</th>
+				<th>コメント</th>
+				<th>投稿時間</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${chatList}">
+				<td th:text="${c.id}">1</td>
+				<td th:text="${c.name}">名前</td>
+				<td th:text="${c.comment}">コメント</td>
+				<td th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm:ss')}">時間</td>
+				<td>
+					<form th:action="@{/admin/chatlist/delete}" method="post" th:object="${c}">
+						<input type="hidden" name="id" th:value="*{id}" />
+						<input type="submit" value="削除">
+
+					</form>
+
+					<form th:action="@{'/admin/edit/' + ${c.id}}" method="post" th:object="${c}">
+						<input type="hidden" name="id" th:value="*{id}" />
+						<input type="hidden" name="name" th:value="*{name}" />
+						<input type="hidden" name="comment" th:value="*{comment}" />
+						<input type="submit" value="編集">
+
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br>
+	<a href="/top">トップページへ戻る</a>
+</body>
+
+</html>
