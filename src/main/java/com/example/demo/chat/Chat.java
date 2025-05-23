@@ -1,11 +1,13 @@
 package com.example.demo.chat;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class Chat {
 
-	//@NotBlank(message = "名前を入力してください")
+	@NotBlank(message = "名前を入力してください")
 	private String name;
 	
-
+	@NotBlank(message = "コメントを入力してください")
 	private String comment;
 
 	public Chat() {
