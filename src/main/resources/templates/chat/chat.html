@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" th:href="@{/style.css}">
-	
+
 </head>
 
 <body>
@@ -21,12 +21,16 @@
 		<input type="submit" value="投稿">
 	</form>
 
-	<br><div th:if="${#lists.isEmpty(chatList)}">投稿はまだありません。</div>
-	<ul class="chat-list" th:if="${chatList}">
-		<li th:each="c : ${chatList}">
-			<b th:text="${c.name}">名前</b>:
-			<span th:text="${c.comment}">コメント</span>
-		</li>
+	<br>
+	<div th:if="${#lists.isEmpty(chatList)}">投稿はまだありません。</div>
+	<ul>
+	  <li th:each="c : ${chatList}" class="chat-item">
+	    <div class="chat-name">
+	      <span th:text="${c.name}">名前</span>
+	      <small th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm')}">時間</small>
+	    </div>
+	    <div class="chat-bubble" th:text="${c.comment}">コメント</div>
+	  </li>
 	</ul>
 
 	<a href="/top">トップページへ戻る</a>

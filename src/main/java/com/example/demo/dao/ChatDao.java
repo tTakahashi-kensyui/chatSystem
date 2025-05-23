@@ -28,4 +28,9 @@ public class ChatDao {
 	    String sql = "SELECT * FROM chat ORDER BY id DESC";  // ID昇順、投稿順に表示
 	    return db.query(sql, new BeanPropertyRowMapper<>(EntForm.class));
 	}
+	
+	public void deleteById(int id) {
+	    String sql = "DELETE FROM chat WHERE id = ?";
+	    db.update(sql, id);
+	}
 }
