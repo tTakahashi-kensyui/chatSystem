@@ -8,16 +8,25 @@
 <body>
 	<h1 th:text="${title}"></h1>
 
-	<form method="get" action="#" th:action="@{/complete}" th:object="${chat}">
+	<form method="post" action="#" th:action="@{/chat}" th:object="${chat}">
 
 		<label><input type="text" name="name" th:value="*{name}" placeholder="お名前"></label>
 		<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">エラー</div>
-
+		
 		<label>: <input type="text" name="comment" th:value="*{comment}" placeholder="コメント:500文字まで"></label>
 		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">エラー</div>
-
+		
 		<input type="submit" value="投稿">
 	</form>
+	
+	<h2>投稿履歴</h2>
+	<div th:if="${#lists.isEmpty(chatList)}">投稿はまだありません。</div>
+	<ul>
+	    <li th:each="c : ${chatList}">
+	        <b th:text="${c.name}">名前</b>:
+			 <span th:text="${c.comment}">コメント</span>
+	    </li>
+	</ul>
 
 	<a href="/top">トップページへ戻る</a>
 </body>

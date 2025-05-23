@@ -27,5 +27,5 @@ public class Chat {
 		this.comment = comment;
 	}
 	
-	
+
 }
